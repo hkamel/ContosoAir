@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "contoso-air.name" -}}
+{{- define "contosoair.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "contoso-air.fullname" -}}
+{{- define "contosoair.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "contoso-air.chart" -}}
+{{- define "contosoair.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "contoso-air.labels" -}}
-helm.sh/chart: {{ include "contoso-air.chart" . }}
-{{ include "contoso-air.selectorLabels" . }}
+{{- define "contosoair.labels" -}}
+helm.sh/chart: {{ include "contosoair.chart" . }}
+{{ include "contosoair.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,7 +45,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "contoso-air.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "contoso-air.name" . }}
+{{- define "contosoair.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "contosoair.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}

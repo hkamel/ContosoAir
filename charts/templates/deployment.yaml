@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "contoso-air.fullname" . }}
+  name: {{ include "contosoair.fullname" . }}
   labels:
-    {{- include "contoso-air.labels" . | nindent 4 }}
+    {{- include "contosoair.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "contoso-air.selectorLabels" . | nindent 6 }}
+      {{- include "contosoair.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "contoso-air.selectorLabels" . | nindent 8 }}
+        {{- include "contosoair.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
